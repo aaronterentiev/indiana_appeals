@@ -1,6 +1,5 @@
 import requests
 from bs4 import BeautifulSoup
-# import json
 import csv
 
 headers = {
@@ -45,17 +44,17 @@ for url in urls:
 
     string = ""
 
-    # Each case is broken into 4 parts
+    # Each case is broken into 4 parts. We must iterate in groups of 4 
     case_iterator = 0
 
     while case_iterator < len(list_of_cases):
         case = list_of_cases[case_iterator+1]
 
         row = ["https://www.in.gov" + case.find('a').get('href'),   # URL
-               list_of_cases[case_iterator].text,                               # Date Published
+               list_of_cases[case_iterator].text,                   # Date Published
                case.text,                                           # Case
-               list_of_cases[case_iterator + 2].text,                           # Lower Court Case Number
-               list_of_cases[case_iterator + 3].text,                           # Appellate Court Case Number
+               list_of_cases[case_iterator + 2].text,               # Lower Court Case Number
+               list_of_cases[case_iterator + 3].text,               # Appellate Court Case Number
                ]
         all_cases.append(row)
 
